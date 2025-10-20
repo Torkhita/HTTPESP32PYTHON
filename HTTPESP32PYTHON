@@ -108,7 +108,7 @@ def handle_request(client_socket, request):
             
             else:
                 # Página no encontrada
-                response = "HTTP/1.1 404 Not Found\r\n\r\n"
+                response = "HTTP/1.1 404 No trobat\r\n\r\n"
                 client_socket.send(response.encode())
                 
     except Exception as e:
@@ -120,12 +120,12 @@ def start_server():
     server_socket.bind(('0.0.0.0', 80))
     server_socket.listen(5)
     
-    print("HTTP server started on port 80")
+    print("Servidor HTTP iniciat al port 80")
     
     while True:
         try:
             client_socket, addr = server_socket.accept()
-            print("Client connected from:", addr)
+            print("Client conectat de:", addr)
             
             request = client_socket.recv(1024)
             if request:
@@ -135,7 +135,7 @@ def start_server():
             time.sleep(0.002)
             
         except Exception as e:
-            print("Server error:", e)
+            print("Error del servidor:", e)
             time.sleep(1)
 
 # Iniciar el servidor
